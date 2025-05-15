@@ -1,58 +1,104 @@
-Hotel Reservation System
-GitHub Repository Description:
+\documentclass[12pt]{article}
+\usepackage[a4paper,margin=1in]{geometry}
+\usepackage{hyperref}
+\usepackage{enumitem}
+\usepackage{graphicx}
+\usepackage{titlesec}
+\titleformat{\section}{\large\bfseries}{\thesection}{1em}{}
+
+\title{\textbf{Hotel Reservation System - README}}
+\author{}
+\date{}
+
+\begin{document}
+
+\maketitle
+
+\section*{GitHub Repository Description}
 JavaFX-based Hotel Reservation System with self-service kiosk and admin panel, built using MVC architecture, MySQL, and Java Logging.
-📌 Project Overview
+
+\section*{📌 Project Overview}
 This project replaces a manual hotel booking system with a modern, interactive desktop application. Guests can book rooms via a self-service kiosk, while admins can manage reservations, generate bills, and collect feedback through a secured backend interface.
-🛠️ Technologies Used
-•	• Java 17
-•	• JavaFX (UI)
-•	• MySQL (Database)
-•	• JDBC (Database Connectivity)
-•	• MVC Architecture
-•	• Java Logging API
-•	• XAMPP / Oracle SQL (Optional)
-🚀 Key Features
-🧾 Kiosk Interface (Self-Service)
-•	• Multi-step guest booking flow with validations
-•	• Room suggestions based on guest count and rules
-•	• Booking summary and confirmation
-•	• Feedback form post-checkout
-🔐 Admin Panel
-•	• Admin login authentication
-•	• Guest search by name or phone
-•	• Reservation management (create, modify, cancel)
-•	• Billing generation with optional discount
-•	• Checkout process with feedback reminder
-•	• Activity and exception logging
-⚙️ Setup Instructions
-1. Clone the Repository
+
+\section*{🛠️ Technologies Used}
+\begin{itemize}
+    \item Java 17
+    \item JavaFX (UI)
+    \item MySQL (Database)
+    \item JDBC (Database Connectivity)
+    \item MVC Architecture
+    \item Java Logging API
+    \item XAMPP / Oracle SQL (Optional)
+\end{itemize}
+
+\section*{🚀 Key Features}
+
+\subsection*{🧾 Kiosk Interface (Self-Service)}
+\begin{itemize}
+    \item Multi-step guest booking flow with validations
+    \item Room suggestions based on guest count and rules
+    \item Booking summary and confirmation
+    \item Feedback form post-checkout
+\end{itemize}
+
+\subsection*{🔐 Admin Panel}
+\begin{itemize}
+    \item Admin login authentication
+    \item Guest search by name or phone
+    \item Reservation management (create, modify, cancel)
+    \item Billing generation with optional discount
+    \item Checkout process with feedback reminder
+    \item Activity and exception logging
+\end{itemize}
+
+\section*{⚙️ Setup Instructions}
+\subsection*{1. Clone the Repository}
+\begin{verbatim}
 git clone https://github.com/yourusername/hotel-reservation-system.git
 cd hotel-reservation-system
-2. Configure the Database
-•	Install MySQL via XAMPP or standalone server.
-•	Create the database:
-•	CREATE DATABASE IF NOT EXISTS HR;
+\end{verbatim}
+
+\subsection*{2. Configure the Database}
+\begin{itemize}
+    \item Install MySQL via XAMPP or standalone server.
+    \item Create the database:
+\begin{verbatim}
+CREATE DATABASE IF NOT EXISTS HR;
 USE HR;
-•	Run the schema.sql file from /db/schema.sql to create tables and insert test data.
-3. Update Database Credentials
-Open /src/main/java/com/hotel/util/Database.java and edit:
+\end{verbatim}
+    \item Run the \texttt{schema.sql} file from \texttt{/databaseScript.sql} to create tables and insert test data.
+\end{itemize}
+
+\subsection*{3. Update Database Credentials}
+Edit the file \texttt{\src\main\java\com\example\hotelreservation\database}:
+\begin{verbatim}
 private static final String URL = "jdbc:mysql://localhost:3306/hr";
 private static final String USER = "root";
 private static final String PASSWORD = ""; // Your MySQL password
-4. Run the Application
-Run Main.java from your IDE (IntelliJ, Eclipse, NetBeans).
-💾 Database Structure
-•	• guests - stores guest info and feedback
-•	• rooms - room types, availability, pricing
-•	• reservations - tracks booking info
-•	• billing - reservation charges with tax & discounts
-•	• admins - login info for hotel staff
-•	• feedbacks - ratings & comments after stay
-•	• admin_logs, exception_logs - activity & error tracking
-📸 Screenshots (Optional)
-Add screenshots here to show Kiosk interface, Admin panel, and database view.
-📚 License
+\end{verbatim}
+
+\subsection*{4. Run the Application}
+Run \texttt{Main.java} from your IDE (IntelliJ, Eclipse, NetBeans).
+
+\section*{💾 Database Structure}
+\begin{itemize}
+    \item \textbf{guests} – stores guest info and feedback
+    \item \textbf{rooms} – room types, availability, pricing
+    \item \textbf{reservations} – tracks booking info
+    \item \textbf{billing} – reservation charges with tax \& discounts
+    \item \textbf{admins} – login info for hotel staff
+    \item \textbf{feedbacks} – ratings \& comments after stay
+    \item \textbf{admin\_logs, exception\_logs} – activity \& error tracking
+\end{itemize}
+
+\section*{📸 Demo (Optional)}
+
+
+\section*{📚 License}
 This project is for academic and demonstration purposes. No commercial use is permitted without explicit permission.
-🙋‍♂️ Author
-Developed by [Your Name]
-[LinkedIn](#) | [GitHub](#) | [Email](#)
+
+\section*{🙋‍♂️ Author}
+Developed by \textbf{[Vrunda Patel]} \\
+\href{#}{LinkedIn} | \href{#https://github.com/ptlvrd}{GitHub} | \href{#}{Email}
+
+\end{document}
