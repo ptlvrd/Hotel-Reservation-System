@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox alignment="CENTER" spacing="15"
+      xmlns:fx="http://javafx.com/fxml"
+      fx:controller="com.example.hotelreservation.controllers.FeedbackController"
+      style="-fx-padding: 20;">
+
+    <Label text="Feedback Form" style="-fx-font-size: 20px; -fx-font-weight: bold;"/>
+
+    <GridPane vgap="10" hgap="10">
+        <Label text="Bill Number:" GridPane.rowIndex="0" GridPane.columnIndex="0"/>
+        <Label fx:id="billNumberLabel" text="" GridPane.rowIndex="0" GridPane.columnIndex="1"/>
+
+        <Label text="Rate your experience:" GridPane.rowIndex="1" GridPane.columnIndex="0"/>
+        <HBox spacing="10" GridPane.rowIndex="1" GridPane.columnIndex="1">
+            <RadioButton fx:id="rating1" text="1" toggleGroup="$ratingGroup"/>
+            <RadioButton fx:id="rating2" text="2" toggleGroup="$ratingGroup"/>
+            <RadioButton fx:id="rating3" text="3" toggleGroup="$ratingGroup"/>
+            <RadioButton fx:id="rating4" text="4" toggleGroup="$ratingGroup"/>
+            <RadioButton fx:id="rating5" text="5" toggleGroup="$ratingGroup"/>
+        </HBox>
+
+        <Label text="Comments:" GridPane.rowIndex="2" GridPane.columnIndex="0"/>
+        <TextArea fx:id="commentsArea" prefHeight="100" GridPane.rowIndex="2" GridPane.columnIndex="1"/>
+    </GridPane>
+
+    <HBox spacing="10" alignment="CENTER">
+        <Button text="Submit" onAction="#submitFeedback"/>
+        <Button text="Cancel" onAction="#cancel"/>
+    </HBox>
+
+    <fx:define>
+        <ToggleGroup fx:id="ratingGroup"/>
+    </fx:define>
+</VBox>

@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox alignment="CENTER" spacing="15"
+      xmlns:fx="http://javafx.com/fxml"
+      fx:controller="com.example.hotelreservation.controllers.BillingController"
+      style="-fx-padding: 40;">
+
+    <Label text="Billing System" style="-fx-font-size: 18px; -fx-font-weight: bold;"/>
+
+    <HBox spacing="10">
+        <TextField fx:id="searchBillingField" promptText="Search by Guest Name"/>
+        <Button text="Search" onAction="#handleSearchBilling"/>
+    </HBox>
+
+    <TableView fx:id="billingTable">
+        <columns>
+            <TableColumn fx:id="guestColumn" text="Guest Name" prefWidth="150"/>
+            <TableColumn fx:id="roomColumn" text="Room Type" prefWidth="120"/>
+            <TableColumn fx:id="totalAmountColumn" text="Total Amount" prefWidth="120"/>
+        </columns>
+    </TableView>
+
+    <HBox spacing="10">
+        <TextField fx:id="discountField" promptText="Enter Discount Amount"/>
+        <Button text="Apply Discount" onAction="#applyDiscount"/>
+    </HBox>
+
+    <Button text="Print Invoice" onAction="#handlePrintInvoice"/>
+</VBox>

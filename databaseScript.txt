@@ -1,0 +1,79 @@
+USE hotel_reservation;
+
+-- ✅ Guests Table
+CREATE TABLE guests (
+    guest_id INT AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(100) NOT NULL,
+    phone_number VARCHAR(15) NOT NULL UNIQUE,
+    email VARCHAR(100) NOT NULL UNIQUE,
+    address TEXT NOT NULL,
+    feedback TEXT DEFAULT NULL
+);
+
+-- ✅ Rooms Table
+CREATE TABLE rooms (
+    room_id INT AUTO_INCREMENT PRIMARY KEY,
+    room_type ENUM('SINGLE', 'DOUBLE', 'DELUX', 'PENTHOUSE') NOT NULL,
+    num_beds INT NOT NULL,
+    price DECIMAL(10,2) NOT NULL,
+    status ENUM('AVAILABLE', 'BOOKED') DEFAULT 'AVAILABLE'
+);
+
+-- ✅ Reservations Table
+CREATE TABLE reservations (
+    reservation_id INT AUTO_INCREMENT PRIMARY KEY,
+    guest_id INT NOT NULL,
+    room_id INT NOT NULL,
+    checkin_date DATE NOT NULL,
+    checkout_date DATE NOT NULL,
+    num_guests INT NOT NULL,
+    status ENUM('CONFIRMED', 'CANCELLED', 'CHECKED_OUT') DEFAULT 'CONFIRMED',
+    FOREIGN KEY (guest_id) REFERENCES guests(guest_id) ON DELETE CASCADE,
+    FOREIGN KEY (room_id) REFERENCES rooms(room_id) ON DELETE CASCADE
+);
+
+-- ✅ Billing Table
+CREATE TABLE billing (
+    bill_id INT AUTO_INCREMENT PRIMARY KEY,
+    reservation_id INT NOT NULL,
+    amount DECIMAL(10,2) NOT NULL,
+    tax DECIMAL(10,2) NOT NULL,
+    total_amount DECIMAL(10,2) NOT NULL,
+    discount DECIMAL(10,2) DEFAULT 0.00,
+    FOREIGN KEY (reservation_id) REFERENCES reservations(reservation_id) ON DELETE CASCADE
+);
+
+-- ✅ Admins Table
+CREATE TABLE admins (
+    admin_id INT AUTO_INCREMENT PRIMARY KEY,
+    username VARCHAR(50) NOT NULL UNIQUE,
+    password VARCHAR(255) NOT NULL
+);
+
+-- ✅ Feedback Table
+CREATE TABLE feedbacks (
+    feedback_id INT AUTO_INCREMENT PRIMARY KEY,
+    guest_id INT NOT NULL,
+    reservation_id INT NOT NULL,
+    comments TEXT NOT NULL,
+    rating INT CHECK (rating BETWEEN 1 AND 5),
+    FOREIGN KEY (guest_id) REFERENCES guests(guest_id) ON DELETE CASCADE,
+    FOREIGN KEY (reservation_id) REFERENCES reservations(reservation_id) ON DELETE CASCADE
+);
+
+-- ✅ Insert Default Admins
+INSERT INTO admins (username, password) VALUES ('admin1', 'adminpass1'), ('admin2', 'adminpass2');
+
+-- ✅ Insert Sample Room Data
+INSERT INTO rooms (room_type, num_beds, price, status) VALUES
+('SINGLE', 1, 50.00, 'AVAILABLE'),
+('SINGLE', 1, 55.00, 'AVAILABLE'),
+('DOUBLE', 2, 80.00, 'AVAILABLE'),
+('DOUBLE', 2, 90.00, 'AVAILABLE'),
+('DELUX', 3, 120.00, 'AVAILABLE'),
+('DELUX', 3, 130.00, 'AVAILABLE'),
+('PENTHOUSE', 4, 250.00, 'AVAILABLE'),
+('PENTHOUSE', 4, 270.00, 'AVAILABLE');
+
+-- ✅ Check if rooms are added successfully
+SELECT * FROM rooms;

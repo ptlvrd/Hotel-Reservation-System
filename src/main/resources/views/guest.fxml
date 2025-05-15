@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+
+<VBox xmlns:fx="http://javafx.com/fxml"
+      fx:controller="com.example.hotelreservation.controllers.GuestController"
+      spacing="15" alignment="CENTER"
+      style="-fx-padding: 20;">
+
+    <Label text="Guest Records Management" style="-fx-font-size: 18px; -fx-font-weight: bold;"/>
+
+    <HBox spacing="10" alignment="CENTER">
+        <TextField fx:id="searchField" promptText="Search by Name, Email or Phone" prefWidth="300"/>
+        <Button text="Search" onAction="#searchGuest"/>
+        <Button text="Refresh" onAction="#handleRefresh"/>
+    </HBox>
+
+    <TableView fx:id="guestsTable" VBox.vgrow="ALWAYS">
+        <columns>
+            <TableColumn fx:id="guestNameColumn" text="Name" prefWidth="150"/>
+            <TableColumn fx:id="phoneColumn" text="Phone" prefWidth="120"/>
+            <TableColumn fx:id="emailColumn" text="Email" prefWidth="180"/>
+            <TableColumn fx:id="addressColumn" text="Address" prefWidth="200"/>
+        </columns>
+        <contextMenu>
+            <ContextMenu>
+                <items>
+                    <MenuItem text="Edit Guest" onAction="#handleModifyGuest"/>
+                    <MenuItem text="View Feedbacks" onAction="#handleViewFeedbacks"/>
+                    <MenuItem text="Delete Guest" onAction="#handleDeleteGuest"/>
+                </items>
+            </ContextMenu>
+        </contextMenu>
+    </TableView>
+
+    <HBox spacing="10" alignment="CENTER">
+        <Button text="Modify Guest" onAction="#handleModifyGuest"/>
+        <Button text="View Feedbacks" onAction="#handleViewFeedbacks"/>
+        <Button text="Delete Guest" onAction="#handleDeleteGuest"
+                style="-fx-background-color: #ff5555; -fx-text-fill: white;"/>
+    </HBox>
+
+    <HBox alignment="CENTER_LEFT">
+        <Label fx:id="statusLabel" text="No guests loaded" style="-fx-font-style: italic;"/>
+    </HBox>
+
+</VBox>

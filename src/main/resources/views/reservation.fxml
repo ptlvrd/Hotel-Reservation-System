@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+
+<VBox alignment="CENTER" spacing="15"
+      xmlns:fx="http://javafx.com/fxml"
+      fx:controller="com.example.hotelreservation.controllers.ReservationController"
+      style="-fx-padding: 40;">
+
+    <Label text="Manage Reservations" style="-fx-font-size: 18px; -fx-font-weight: bold;"/>
+
+    <HBox spacing="10">
+        <TextField fx:id="searchReservationField" promptText="Search by Guest Name or Date" prefWidth="250"/>
+        <Button text="Search" onAction="#handleSearchReservation"/>
+    </HBox>
+
+    <TableView fx:id="reservationsTable" VBox.vgrow="ALWAYS">
+        <columns>
+            <TableColumn fx:id="reservationIdColumn" text="ID" prefWidth="60"/>
+            <TableColumn fx:id="guestNameColumn" text="Guest Name" prefWidth="150"/>
+            <TableColumn fx:id="roomTypeColumn" text="Room Type" prefWidth="100"/>
+            <TableColumn fx:id="checkInColumn" text="Check-in" prefWidth="120"/>
+            <TableColumn fx:id="checkOutColumn" text="Check-out" prefWidth="120"/>
+            <TableColumn fx:id="statusColumn" text="Status" prefWidth="100"/>
+        </columns>
+    </TableView>
+
+    <!-- Add booking details modification section -->
+    <!-- Update Booking Details Section -->
+    <!-- Update Booking Details Section -->
+    <TitledPane fx:id="updateBookingPane" text="Update Booking Details" expanded="false">
+        <VBox spacing="10">
+            <!-- Add room count indicator -->
+            <HBox fx:id="multiRoomIndicator" alignment="CENTER_LEFT" style="-fx-background-color: #E3F2FD; -fx-padding: 8; -fx-background-radius: 4;">
+                <Label fx:id="roomCountLabel" text="Rooms in this booking:" style="-fx-font-weight: bold;"/>
+            </HBox>
+
+            <GridPane hgap="10" vgap="10">
+                <columnConstraints>
+                    <ColumnConstraints hgrow="SOMETIMES" minWidth="100" />
+                    <ColumnConstraints hgrow="SOMETIMES" minWidth="200" />
+                </columnConstraints>
+
+                <Label text="Check-in Date:" GridPane.columnIndex="0" GridPane.rowIndex="0" />
+                <DatePicker fx:id="checkInDatePicker" GridPane.columnIndex="1" GridPane.rowIndex="0" />
+
+                <Label text="Check-out Date:" GridPane.columnIndex="0" GridPane.rowIndex="1" />
+                <DatePicker fx:id="checkOutDatePicker" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+
+                <Label text="Number of Guests:" GridPane.columnIndex="0" GridPane.rowIndex="2" />
+                <Spinner fx:id="numGuestsSpinner" min="1" max="10" initialValue="2"
+                         prefWidth="100" editable="true" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+
+                <Label text="Status:" GridPane.columnIndex="0" GridPane.rowIndex="3" />
+                <ComboBox fx:id="statusComboBox" prefWidth="200" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+            </GridPane>
+
+            <!-- Container for dynamically created room type selection elements -->
+            <TitledPane text="Room Types" expanded="true">
+                <VBox fx:id="roomTypesContainer" spacing="10">
+                    <!-- Room type comboboxes will be added here dynamically -->
+                </VBox>
+            </TitledPane>
+
+            <HBox alignment="CENTER_RIGHT" spacing="10">
+                <Button text="Apply Changes" onAction="#handleApplyChanges"
+                        style="-fx-background-color: #4CAF50; -fx-text-fill: white;"/>
+            </HBox>
+        </VBox>
+    </TitledPane>
+
+    <HBox spacing="10" alignment="CENTER">
+        <Button text="Modify Booking" onAction="#handleModifyBooking"
+                style="-fx-background-color: #1976D2; -fx-text-fill: white;"/>
+        <Button text="Cancel Booking" onAction="#handleCancelBooking"
+                style="-fx-background-color: #F44336; -fx-text-fill: white;"/>
+        <Button text="Print Booking Details" onAction="#handlePrintBooking"
+                style="-fx-background-color: #607D8B; -fx-text-fill: white;"/>
+        <Button text="Back" onAction="#handleBackButton"
+                style="-fx-background-color: #757575; -fx-text-fill: white;"/>
+    </HBox>
+
+    <!-- Message dialog -->
+    <VBox fx:id="messageBox" visible="false" style="-fx-background-color: #E8F5E9; -fx-padding: 15; -fx-background-radius: 5;">
+        <Label fx:id="messageLabel" style="-fx-font-size: 14px; -fx-font-weight: bold;"/>
+        <HBox alignment="CENTER_RIGHT">
+            <Button text="OK" onAction="#handleMessageClose" style="-fx-background-color: #4CAF50; -fx-text-fill: white;"/>
+        </HBox>
+    </VBox>
+</VBox>

@@ -1,0 +1,10 @@
+During this project, I faced two main challenges.
+
+The first challenge was handling multiple room bookings under the same guest. Initially, every room that a guest booked was showing as a separate record in the "Manage Bookings" table. It made the interface messy and confusing. To solve this, I created a new class called GroupedReservation which helped me combine multiple bookings into a single row, based on the guest ID and booking dates. I also updated the ReservationController to show all the rooms inside that one grouped record and even display individual room details like type and price. This made the system much easier to understand and use.
+
+The second issue I faced was with the database connection. At one point, my XAMPP server crashed and MySQL wasn’t working at all. I had to reinstall XAMPP and re-import all my tables to fix it. It took a bit of time, but after that, everything started working smoothly again.
+
+Learnings
+This project taught me a lot about JavaFX, working with MySQL databases, and especially how to handle real-life scenarios like group bookings, billing, filtering, and user experience. I also learned the importance of good UI design and keeping things simple for the user.
+
+Overall, this was a great learning experience and I feel way more confident now about building complete full-stack Java applications

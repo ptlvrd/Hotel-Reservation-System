@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox alignment="CENTER" spacing="20"
+      xmlns:fx="http://javafx.com/fxml"
+      fx:controller="com.example.hotelreservation.controllers.KioskController"
+      style="-fx-padding: 40; -fx-alignment: CENTER;">
+
+    <Label text="Welcome to Vruneca Hotel Self-Service Kiosk"
+           style="-fx-font-size: 20px; -fx-font-weight: bold;"/>
+
+    <!-- Welcome Image -->
+    <ImageView fx:id="welcomeImage" fitWidth="500" fitHeight="300" preserveRatio="true"
+               style="-fx-border-color: black; -fx-border-width: 2px;"/>
+
+    <Button fx:id="startBookingButton" text="Start Booking" onAction="#handleStartBooking"
+            style="-fx-font-size: 14px; -fx-padding: 10px 20px;"/>
+
+</VBox>
